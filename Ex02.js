@@ -2,20 +2,18 @@
 //Peça uma frase e crie uma função que retorna a maior palavra da frase usando
 //split() e reduce().
 
-var prompt = require('prompt-sync')();
+function maiorPalavra(frase) {
+  let palavras = frase.split(" ");
 
-let frase = prompt("Digite uma frase: ");
+  let maior = palavras.reduce((maiorAtual, palavraAtual) => {
+    return palavraAtual.length > maiorAtual.length ? palavraAtual : maiorAtual;
+  });
 
-let palavras = frase.split(" ");
+  return maior;
+}
 
-let maior = palavras.reduce(function(maior, atual) {
-  if (atual.length > maior.length) {
-    
-    return atual;
+// Exemplo de uso:
+let frase = "O cachorro correu rapidamente pelo quintal";
+let resultado = maiorPalavra(frase);
 
-  } else {
-    return maior;
-  }
-});
-console.log("A maior palavra e:", maior);
-
+console.log(resultado); // Saída: "rapidamente"

@@ -3,15 +3,28 @@
 // usando Math.random(), charCodeAt() e String.fromCharCode().
 
 function gerarSenha() {
-    const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&";
-    let senha = "";
-  
-    for (let i = 0; i < 10; i++) {
-      const indice = Math.floor(Math.random() * caracteres.length);
-      senha += caracteres.charAt(indice);
-    }
-  
-    return senha;
+  let senha = "";
+  let tamanho = 10;
+
+  // Conjunto de caracteres permitidos
+  let letrasMaiusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let letrasMinusculas = "abcdefghijklmnopqrstuvwxyz";
+  let numeros = "0123456789";
+  let simbolos = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+
+  let todosCaracteres = letrasMaiusculas + letrasMinusculas + numeros + simbolos;
+
+  for (let i = 0; i < tamanho; i++) {
+    // Pega um índice aleatório
+    let indice = Math.floor(Math.random() * todosCaracteres.length);
+
+    // Pega o caractere correspondente
+    senha += todosCaracteres.charAt(indice);
   }
-  
-  console.log(gerarSenha());
+
+  return senha;
+}
+
+// Exemplo de uso:
+let novaSenha = gerarSenha();
+console.log(novaSenha); // Exemplo: "aB9@f2$Xq1"

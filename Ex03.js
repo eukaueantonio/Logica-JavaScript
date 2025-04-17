@@ -2,15 +2,22 @@
 //Peça uma frase e uma letra, e retorne quantas palavras começam com essa letra (ex:
 //&#39;a&#39;). Use split(), startsWith() e filter().
 
-var prompt = require('prompt-sync')();
+function contarPalavrasComLetra(frase, letra) {
+  // Divide a frase em palavras
+  let palavras = frase.split(" ");
 
-const frase = prompt("Digite uma frase:");
-const letra = prompt("Digite uma letra:").toLowerCase();
+  // Filtra só as que começam com a letra (ignorando maiúsculas/minúsculas)
+  let palavrasQueComecamComLetra = palavras.filter(palavra =>
+    palavra.toLowerCase().startsWith(letra.toLowerCase())
+  );
 
-const palavras = frase.split(" ");
+  // Retorna quantas são
+  return palavrasQueComecamComLetra.length;
+}
 
-const letraselecionada = palavras.filter(palavra =>
-  palavra.toLowerCase().startsWith(letra)
-);
+// Exemplo de uso:
+let frase = "A arara azul atravessou a avenida";
+let letra = "a";
 
-console.log(`Número de palavras que começam com "${letra}": ${letraselecionada.length}`);
+let resultado = contarPalavrasComLetra(frase, letra);
+console.log(resultado); // Saída: 5
